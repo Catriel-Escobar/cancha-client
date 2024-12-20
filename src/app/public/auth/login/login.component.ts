@@ -1,13 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   FormControl,
   FormGroup,
+  FormsModule,
   NonNullableFormBuilder,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { UserStore } from '../../../core/stores/user-store/user.store';
-
+import { AuthStore } from '../../../core/stores/user-store/auth.store';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 type LoginForm = FormGroup<{
   email: FormControl<string>;
   password: FormControl<string>;
@@ -15,33 +22,48 @@ type LoginForm = FormGroup<{
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    CommonModule,
+  ],
   standalone: true,
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
-  providers: [UserStore],
+  styleUrl: './login.component.scss',
 })
-export default class LoginComponent implements OnInit {
+export default class LoginComponent {
+  isPasswordVisible = signal<boolean>(false);
+
   loginForm: FormGroup;
   private fb = inject(NonNullableFormBuilder);
-  readonly userStore = inject(UserStore);
+  readonly authStore = inject(AuthStore);
+  private email = signal<string | null>('');
+  protected activateRoute = inject(ActivatedRoute);
   constructor() {
-    // Crear formulario reactivo
+    this.activateRoute.queryParams.subscribe((params) => {
+      if (params['email']) {
+        this.email.set(params['email']);
+      }
+    });
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: [this.email(), [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
-
-    // Seleccionar estado de errores y carga
-  }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   onSubmit(): void {
-    // Verificar validez del formulario
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
+      this.authStore.login({ email, password });
     }
+  }
+
+  togglePasswordVisibility() {
+    this.isPasswordVisible.set(!this.isPasswordVisible());
   }
 }

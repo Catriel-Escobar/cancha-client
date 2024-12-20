@@ -8,10 +8,12 @@ export default [
     children: [
       {
         path: 'login',
+        title: 'Login | Cancha3',
         loadComponent: () => import('./login/login.component'),
       },
       {
         path: 'register',
+        title: 'Register | Cancha3',
         loadComponent: () => import('./register/register.component'),
       },
       {

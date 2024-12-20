@@ -1,0 +1,36 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 50px;
+}
+.register-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  form {
+    mat-error {
+      width: 100%;
+    }
+    display: flex;
+    flex-direction: column;
+
+    button {
+      margin-top: 20px;
+    }
+  }
+
+  @media screen and (max-width: 390px) {
+    .button-login {
+      width: 100%;
+    }
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}

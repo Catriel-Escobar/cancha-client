@@ -1,38 +1,50 @@
-<div class="container">
-  <h1>Formulario Reactivo en Angular</h1>
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')"
+            >El correo es obligatorio.</mat-error
+          >
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email')"
+            >El correo no es válido.</mat-error
+          >
+        </mat-form-field>
 
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <!-- Campo nombre -->
-    <div>
-      <label for="email">Email:</label>
-      <input id="email" type="email" formControlName="email" />
-      @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
-      <div>
-        @if (loginForm.get('email')?.hasError('required')) {
-        <small>El email es obligatorio.</small>
-        } @if (loginForm.get('email')?.hasError('minlength')) {
-        <small>El email debe tener al menos 3 caracteres.</small>
-        }
-      </div>
-      }
-    </div>
+        <mat-form-field appearance="outline" [floatLabel]="'auto'">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            [type]="isPasswordVisible() ? 'text' : 'password'"
+            required
+          />
+          <mat-icon matSuffix (click)="togglePasswordVisibility()">
+            @if (isPasswordVisible()) { visibility }@else { visibility_off }
+          </mat-icon>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
+            >La contraseña es obligatoria.</mat-error
+          >
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')"
+            >La contraseña debe tener al menos 6 caracteres.</mat-error
+          >
+        </mat-form-field>
 
-    <div>
-      <label for="password">Password:</label>
-      <input id="email" type="password" formControlName="password" />
-      @if (loginForm.get('password')?.touched &&
-      loginForm.get('password')?.invalid) {
-      <div>
-        @if (loginForm.get('password')?.hasError('required')) {
-        <small>La contraseña es obligatoria.</small>
-        } @if (loginForm.get('password')?.hasError('minlength')) {
-        <small>La contraseña debe tener al menos 8 caracteres.</small>
-        }
-      </div>
-      }
-    </div>
-    <p>{{ userStore.userName() }}</p>
-    <!-- Botón de envío -->
-    <button type="submit" [disabled]="loginForm.invalid">Enviar</button>
-  </form>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="button-login"
+        >
+          Iniciar sesión
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

@@ -8,10 +8,16 @@ export const authorizationInterceptorInterceptor: HttpInterceptorFn = (
 ) => {
   const authService = inject(AuthService);
   const token = authService.getToken();
-  const cloned = req.clone({
-    setHeaders: {
-      Authorization: token ? `Bearer ${token}` : '',
-    },
-  });
-  return next(cloned);
+  if (token) {
+    const clonedRequest = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`,
+      },
+
+      withCredentials: true,
+    });
+    console.log(clonedRequest);
+    return next(clonedRequest);
+  }
+  return next(req);
 };
