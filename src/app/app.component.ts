@@ -30,9 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
           0
         );
 
-        // Set new interval
         this.tokenCheckInterval = window.setInterval(() => {
-          console.log('ejecutando el intervalo');
           this.authStore.checkLogin();
         }, refreshInterval);
       } else {

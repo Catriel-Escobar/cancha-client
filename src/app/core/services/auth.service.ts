@@ -42,7 +42,6 @@ export class AuthService extends BaseHttpService {
 
   // Método de Registro para NgRx
   register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
-    console.log({ registerRequest });
     return this.http
       .post<RegisterResponse>(`${this.apiUrl}register`, registerRequest)
       .pipe(

@@ -16,7 +16,7 @@ export const authorizationInterceptorInterceptor: HttpInterceptorFn = (
 
       withCredentials: true,
     });
-    console.log(clonedRequest);
+
     return next(clonedRequest);
   }
   return next(req);

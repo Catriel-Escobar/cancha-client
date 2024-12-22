@@ -1,12 +1,12 @@
-@import "~@angular/material/theming";
+// @import "~@angular/material/theming";
 
-// Definir tus colores personalizados
-$my-primary: mat-palette($mat-indigo);
-$my-accent: mat-palette($mat-pink, 500, 300, 900);
-$my-warn: mat-palette($mat-red);
+// // Definir tus colores personalizados
+// $my-primary: mat-palette($mat-indigo);
+// $my-accent: mat-palette($mat-pink, 500, 300, 900);
+// $my-warn: mat-palette($mat-red);
 
-// Crear el tema
-$my-theme: mat-dark-theme($my-primary, $my-accent, $my-warn);
+// // Crear el tema
+// $my-theme: mat-dark-theme($my-primary, $my-accent, $my-warn);
 
-// Aplicar el tema
-@include angular-material-theme($my-theme);
+// // Aplicar el tema
+// @include angular-material-theme($my-theme);
