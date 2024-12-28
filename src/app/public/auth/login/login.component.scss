@@ -1,15 +1,9 @@
 .login-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+
+  padding-top: 53px ;
   height: 100vh;
-}
-mat-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
 }
 .login-card {
   width: 100%;
@@ -20,7 +14,9 @@ mat-card {
   }
   mat-form-field {
     width: 100%;
+
   }
+
   @media screen and (max-width: 390px) {
     .button-login {
       width: 100%;
@@ -31,12 +27,18 @@ mat-card {
   }
 }
 
+.login-registered {
+  margin-top: 2.438rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
 }
 
-mat-card-content {
-  width: 100%;
-}

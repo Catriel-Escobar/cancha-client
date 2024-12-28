@@ -1,4 +1,15 @@
 <div class="auth-layout">
-  <h1>Tiempo de expiración: {{ userStore.exp() }}</h1>
+  <div class="login-header">
+    <app-logo></app-logo>
+  <div class="login-title">
+    <h2 [appAppTextStyle]="'title'">
+      ¡Bienvenido!
+    </h2>
+    <h4 [appAppTextStyle]="'subtitle'">
+    {{text()}}
+    </h4>
+    
+  </div>
+</div>
   <router-outlet />
 </div>

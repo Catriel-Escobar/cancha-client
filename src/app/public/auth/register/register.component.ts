@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { AuthStore } from '../../../core/stores/user-store/auth.store';
+import { QuestionLinkComponent } from '../../../shared/components/question-link/question-link.component';
 
 @Component({
   selector: 'app-register',
@@ -28,6 +29,7 @@ import { AuthStore } from '../../../core/stores/user-store/auth.store';
     MatButtonModule,
     MatIconModule,
     CommonModule,
+    QuestionLinkComponent
   ],
 })
 export default class RegisterComponent {

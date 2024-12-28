@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { QuestionLinkComponent } from '../../../shared/components/question-link/question-link.component';
 type LoginForm = FormGroup<{
   email: FormControl<string>;
   password: FormControl<string>;
@@ -22,7 +23,8 @@ type LoginForm = FormGroup<{
 
 @Component({
   selector: 'app-login',
-  imports: [
+  imports: [ 
+    QuestionLinkComponent,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,

@@ -1,9 +1,7 @@
 <div class="login-container">
-  <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
+  <div class="login-card">
+  
+    <div>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
@@ -44,7 +42,21 @@
         >
           Iniciar sesión
         </button>
+        <app-question-link textOne="Olvidaste tu contraseña?" textTwo="Haz click para recuperarla" link="/recuperar"/>
+
       </form>
-    </mat-card-content>
-  </mat-card>
+      <div class="login-registered">
+        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="2" viewBox="0 0 84 2" fill="none">
+          <path d="M0 1H84" stroke="#D6DDE6" stroke-opacity="0.2" stroke-width="1.5"/>
+          </svg>
+          <app-question-link textOne="¿Eres nuevo?" textTwo="Crea una cuenta" link="/auth/register"/>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="84" height="2" viewBox="0 0 84 2" fill="none">
+          <path d="M0 1H84" stroke="#D6DDE6" stroke-opacity="0.2" stroke-width="1.5"/>
+          </svg>
+      </div>
+    </div>
+  </div>
 </div>
+
+

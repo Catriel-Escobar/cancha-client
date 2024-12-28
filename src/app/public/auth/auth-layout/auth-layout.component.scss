@@ -1,1 +1,15 @@
-
+.auth-layout {
+    padding-top: 53px;
+}
+.login-header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+  
+    .login-title {
+      text-align: center;
+    }
+  }

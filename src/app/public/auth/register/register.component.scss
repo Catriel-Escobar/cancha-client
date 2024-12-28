@@ -1,7 +1,6 @@
 .register-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100vh;
   gap: 50px;
 }
@@ -13,6 +12,14 @@
   flex-direction: column;
   gap: 20px;
 
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
   form {
     mat-error {
       width: 100%;

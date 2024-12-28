@@ -5,6 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
 import { AuthStore } from './core/stores/user-store/auth.store';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
